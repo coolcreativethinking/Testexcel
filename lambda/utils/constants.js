@@ -247,6 +247,18 @@ const STRINGS = {
     RECITER_LIST: 'Available reciters: %s. Say "set reciter to" followed by the name.',
     SPEED_LIST: 'Available speeds: slow, normal, and slightly fast. Say "set speed to" followed by your choice.',
     HIJRI_DATE: 'Today is %s %s, %s Hijri. ',
+    EID_FITR_NAME: 'Eid Al-Fitr',
+    EID_ADHA_NAME: 'Eid Al-Adha',
+    EID_GREETING: '%s Mubarak! Taqabbal Allahu minna wa minkum. ',
+    EID_DAY: 'This is day %s of Eid. ',
+    EID_TAKBEER_PLAYING: 'Playing %s takbeer. Allahu Akbar, Allahu Akbar.',
+    EID_TAKBEER_PLAYING_GENERAL: 'Playing Eid takbeer. Allahu Akbar.',
+    EID_TAKBEER_REMINDER: 'Remember to recite the takbeer before Eid prayer. Say "play Eid takbeer" to start. ',
+    EID_POST_PRAYER_TAKBEER: 'Takbeer is recommended after each prayer during these days. ',
+    EID_NOT_TODAY: 'It is not currently Eid. ',
+    KHUTBAH_LIVE: 'Playing live Friday khutbah from %s.',
+    KHUTBAH_SAVED: 'Playing the latest Friday khutbah from %s.',
+    COUNTDOWN_IQAMA: 'Iqama for %s is in %s minutes.',
   },
   ar: {
     WELCOME: 'مرحباً بك في أذاني، رفيقك للصلاة. ',
@@ -283,6 +295,18 @@ const STRINGS = {
     RECITER_LIST: 'المؤذنون المتاحون: %s. قل "اضبط المؤذن على" متبوعاً بالاسم.',
     SPEED_LIST: 'السرعات المتاحة: بطيء، عادي، وسريع قليلاً.',
     HIJRI_DATE: 'اليوم %s %s، %s هجري. ',
+    EID_FITR_NAME: 'عيد الفطر',
+    EID_ADHA_NAME: 'عيد الأضحى',
+    EID_GREETING: '%s مبارك! تقبل الله منا ومنكم. ',
+    EID_DAY: 'هذا اليوم %s من العيد. ',
+    EID_TAKBEER_PLAYING: 'جاري تشغيل تكبيرات %s. الله أكبر، الله أكبر.',
+    EID_TAKBEER_PLAYING_GENERAL: 'جاري تشغيل تكبيرات العيد. الله أكبر.',
+    EID_TAKBEER_REMINDER: 'تذكر التكبير قبل صلاة العيد. قل "شغل تكبيرات العيد" للبدء. ',
+    EID_POST_PRAYER_TAKBEER: 'يستحب التكبير بعد كل صلاة في هذه الأيام. ',
+    EID_NOT_TODAY: 'ليس اليوم عيداً. ',
+    KHUTBAH_LIVE: 'جاري تشغيل خطبة الجمعة مباشرة من %s.',
+    KHUTBAH_SAVED: 'جاري تشغيل آخر خطبة جمعة من %s.',
+    COUNTDOWN_IQAMA: 'الإقامة لصلاة %s بعد %s دقيقة.',
   },
   fr: {
     WELCOME: 'Bienvenue sur Mon Adhan, votre compagnon de prière islamique. ',
@@ -319,6 +343,18 @@ const STRINGS = {
     RECITER_LIST: 'Muezzins disponibles: %s. Dites "définir le muezzin sur" suivi du nom.',
     SPEED_LIST: "Vitesses disponibles: lent, normal, et légèrement rapide.",
     HIJRI_DATE: "Aujourd'hui est le %s %s, %s de l'Hégire. ",
+    EID_FITR_NAME: "Aïd al-Fitr",
+    EID_ADHA_NAME: "Aïd al-Adha",
+    EID_GREETING: '%s Moubarak! Taqabbal Allahu minna wa minkoum. ',
+    EID_DAY: "C'est le jour %s de l'Aïd. ",
+    EID_TAKBEER_PLAYING: "Lecture du takbeer de l'%s. Allahou Akbar.",
+    EID_TAKBEER_PLAYING_GENERAL: "Lecture du takbeer de l'Aïd. Allahou Akbar.",
+    EID_TAKBEER_REMINDER: "N'oubliez pas le takbeer avant la prière de l'Aïd. Dites \"jouer le takbeer\" pour commencer. ",
+    EID_POST_PRAYER_TAKBEER: "Le takbeer est recommandé après chaque prière pendant ces jours. ",
+    EID_NOT_TODAY: "Ce n'est pas l'Aïd aujourd'hui. ",
+    KHUTBAH_LIVE: 'Lecture de la khoutba du vendredi en direct de %s.',
+    KHUTBAH_SAVED: 'Lecture de la dernière khoutba du vendredi de %s.',
+    COUNTDOWN_IQAMA: "L'Iqama pour %s est dans %s minutes.",
   },
 };
 
@@ -330,6 +366,49 @@ const HIJRI_MONTHS = {
        'رجب', 'شعبان', 'رمضان', 'شوال', 'ذو القعدة', 'ذو الحجة'],
   fr: ['Mouharram', 'Safar', "Rabi' al-Awwal", "Rabi' ath-Thani", 'Joumada al-Oula', 'Joumada ath-Thania',
        'Rajab', 'Chaabane', 'Ramadan', 'Chawwal', 'Dhou al-Qida', 'Dhou al-Hijja'],
+};
+
+// ─── EID CONFIGURATION ───
+const EID_AUDIO = {
+  takbeerLoop: `${BASE_AUDIO_URL}/eid/takbeer_loop.mp3`,       // 30-60 min looping takbeer
+  takbeerShort: `${BASE_AUDIO_URL}/eid/takbeer_short.mp3`,     // Short takbeer (3 repetitions, ~1 min)
+  takbeerPostPrayer: `${BASE_AUDIO_URL}/eid/takbeer_post_prayer.mp3`, // Post-prayer takbeer x3
+};
+
+// ─── FRIDAY KHUTBAH SOURCES ───
+const KHUTBAH_SOURCES = {
+  makkah: {
+    id: 'makkah',
+    name: 'Masjid al-Haram, Makkah',
+    nameAr: 'المسجد الحرام، مكة المكرمة',
+    nameFr: 'Masjid al-Haram, La Mecque',
+    liveStreamUrl: `${BASE_AUDIO_URL}/khutbah/makkah_live.mp3`,
+    latestRecordingUrl: `${BASE_AUDIO_URL}/khutbah/makkah_latest.mp3`,
+  },
+  madinah: {
+    id: 'madinah',
+    name: 'Masjid an-Nabawi, Madinah',
+    nameAr: 'المسجد النبوي، المدينة المنورة',
+    nameFr: 'Masjid an-Nabawi, Médine',
+    liveStreamUrl: `${BASE_AUDIO_URL}/khutbah/madinah_live.mp3`,
+    latestRecordingUrl: `${BASE_AUDIO_URL}/khutbah/madinah_latest.mp3`,
+  },
+  egypt: {
+    id: 'egypt',
+    name: 'Al-Azhar Mosque, Cairo',
+    nameAr: 'الجامع الأزهر، القاهرة',
+    nameFr: "Mosquée Al-Azhar, Le Caire",
+    liveStreamUrl: null,
+    latestRecordingUrl: `${BASE_AUDIO_URL}/khutbah/egypt_latest.mp3`,
+  },
+  uae: {
+    id: 'uae',
+    name: 'Sheikh Zayed Grand Mosque, UAE',
+    nameAr: 'جامع الشيخ زايد الكبير، الإمارات',
+    nameFr: 'Grande Mosquée Sheikh Zayed, EAU',
+    liveStreamUrl: null,
+    latestRecordingUrl: `${BASE_AUDIO_URL}/khutbah/uae_latest.mp3`,
+  },
 };
 
 // APL constants
@@ -352,6 +431,8 @@ module.exports = {
   EVERYAYAH_BASE,
   QURAN_RECITERS,
   RAMADAN_RECITALS,
+  EID_AUDIO,
+  KHUTBAH_SOURCES,
   STRINGS,
   HIJRI_MONTHS,
   APL_DOCUMENT_VERSION,

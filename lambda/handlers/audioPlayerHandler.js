@@ -68,16 +68,55 @@ const PlaybackStoppedHandler = {
 
 /**
  * PlaybackNearlyFinished - Track is almost done.
- * Could enqueue the next track here if we had a playlist.
- * For Azan, we just let it finish.
+ * Enqueue the next track if we have pending audio (Eid takbeer after Azan,
+ * or Azan after Quran recitation).
  */
 const PlaybackNearlyFinishedHandler = {
   canHandle(handlerInput) {
     return Alexa.getRequestType(handlerInput.requestEnvelope) === 'AudioPlayer.PlaybackNearlyFinished';
   },
-  handle(handlerInput) {
-    // Azan is a single track, no queue needed
-    return handlerInput.responseBuilder.getResponse();
+  async handle(handlerInput) {
+    const { responseBuilder } = handlerInput;
+    const currentToken = handlerInput.requestEnvelope.request.token || '';
+
+    // Check for pending post-prayer Eid takbeer
+    try {
+      const attributes = await handlerInput.attributesManager.getPersistentAttributes();
+
+      // If Azan just finished and Eid takbeer is pending
+      if (currentToken.startsWith('azan-') && attributes.pendingPostPrayerTakbeer) {
+        const takbeerUrl = attributes.pendingPostPrayerTakbeerUrl;
+        if (takbeerUrl) {
+          const nextToken = `eid-takbeer-post-${Date.now()}`;
+          responseBuilder.addAudioPlayerPlayDirective('ENQUEUE', takbeerUrl, nextToken, 0, currentToken, {
+            title: 'Eid Takbeer',
+            subtitle: 'Allahu Akbar',
+          });
+          // Clear the pending flag
+          attributes.pendingPostPrayerTakbeer = false;
+          handlerInput.attributesManager.setPersistentAttributes(attributes);
+          await handlerInput.attributesManager.savePersistentAttributes();
+        }
+      }
+
+      // If Quran just finished and Azan is pending
+      if (currentToken.startsWith('quran-') && attributes.pendingAzanUrl) {
+        const azanUrl = attributes.pendingAzanUrl;
+        const azanToken = attributes.pendingAzanToken || `azan-chained-${Date.now()}`;
+        responseBuilder.addAudioPlayerPlayDirective('ENQUEUE', azanUrl, azanToken, 0, currentToken, {
+          title: 'Azan - Call to Prayer',
+          subtitle: 'My Azan',
+        });
+        attributes.pendingAzanUrl = null;
+        attributes.pendingAzanToken = null;
+        handlerInput.attributesManager.setPersistentAttributes(attributes);
+        await handlerInput.attributesManager.savePersistentAttributes();
+      }
+    } catch (e) {
+      console.log('PlaybackNearlyFinished enqueue error:', e.message);
+    }
+
+    return responseBuilder.getResponse();
   },
 };
 

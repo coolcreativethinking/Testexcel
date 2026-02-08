@@ -136,6 +136,42 @@
             "rappel pour {PrayerName}"
           ]
         },
+        {
+          "name": "PlayEidTakbeerIntent",
+          "slots": [],
+          "samples": [
+            "jouer le takbeer",
+            "takbeer de l'aïd",
+            "jouer les takbeerât",
+            "lancer le takbeer de l'aïd",
+            "takbeer s'il vous plaît"
+          ]
+        },
+        {
+          "name": "GetEidInfoIntent",
+          "slots": [],
+          "samples": [
+            "est-ce l'aïd",
+            "informations sur l'aïd",
+            "quand est l'aïd",
+            "quel jour de l'aïd",
+            "est-ce aujourd'hui l'aïd"
+          ]
+        },
+        {
+          "name": "PlayKhutbahIntent",
+          "slots": [
+            { "name": "KhutbahSource", "type": "KHUTBAH_SOURCE" }
+          ],
+          "samples": [
+            "jouer la khoutba du vendredi",
+            "khoutba du vendredi",
+            "sermon du vendredi",
+            "khoutba de {KhutbahSource}",
+            "jouer la khoutba de {KhutbahSource}",
+            "khoutba en direct"
+          ]
+        },
         { "name": "AMAZON.PauseIntent", "samples": [] },
         { "name": "AMAZON.ResumeIntent", "samples": [] },
         { "name": "AMAZON.StopIntent", "samples": [] },
@@ -193,6 +229,15 @@
           "values": [
             { "name": { "value": "activer", "synonyms": ["oui", "allumer"] } },
             { "name": { "value": "désactiver", "synonyms": ["non", "éteindre"] } }
+          ]
+        },
+        {
+          "name": "KHUTBAH_SOURCE",
+          "values": [
+            { "name": { "value": "La Mecque", "synonyms": ["Makkah", "Haram"] } },
+            { "name": { "value": "Médine", "synonyms": ["Madinah"] } },
+            { "name": { "value": "Égypte", "synonyms": ["Le Caire", "Al-Azhar"] } },
+            { "name": { "value": "Émirats", "synonyms": ["Dubaï", "EAU", "Abou Dabi"] } }
           ]
         }
       ]

@@ -125,10 +125,80 @@ function calculateImsakTime(fajrTime, offsetMinutes) {
   return imsak;
 }
 
+/**
+ * Check if a Hijri date falls within Eid Al-Fitr (Shawwal 1-3).
+ */
+function isEidAlFitr(hijriMonth, hijriDay) {
+  return hijriMonth === 10 && hijriDay >= 1 && hijriDay <= 3;
+}
+
+/**
+ * Check if a Hijri date falls within Eid Al-Adha (Dhul Hijjah 10-12).
+ */
+function isEidAlAdha(hijriMonth, hijriDay) {
+  return hijriMonth === 12 && hijriDay >= 10 && hijriDay <= 12;
+}
+
+/**
+ * Check if a Hijri date falls on the Days of Tashreeq (Dhul Hijjah 11-13)
+ * where takbeer is recited after each prayer.
+ */
+function isDaysOfTashreeq(hijriMonth, hijriDay) {
+  return hijriMonth === 12 && hijriDay >= 10 && hijriDay <= 13;
+}
+
+/**
+ * Get Eid status for a given date.
+ *
+ * @param {Date} date - Gregorian date
+ * @param {string} locale - 'en', 'ar', or 'fr'
+ * @returns {Object} { isEid, eidType, eidDay, hijriDate, shouldPlayTakbeer, shouldPlayPostPrayerTakbeer }
+ */
+async function checkEid(date, locale) {
+  try {
+    const hijriDate = await getHijriDate(date, locale);
+    const month = hijriDate.monthNumber;
+    const day = hijriDate.day;
+
+    const eidFitr = isEidAlFitr(month, day);
+    const eidAdha = isEidAlAdha(month, day);
+    const tashreeq = isDaysOfTashreeq(month, day);
+
+    return {
+      isEid: eidFitr || eidAdha,
+      eidType: eidFitr ? 'fitr' : eidAdha ? 'adha' : null,
+      eidDay: eidFitr ? day : eidAdha ? day - 9 : null,
+      hijriDate,
+      // Play looping takbeer before Eid prayer on day 1
+      shouldPlayPreEidTakbeer: (eidFitr && day === 1) || (eidAdha && day === 10),
+      // Play post-prayer takbeer during all Eid days + Tashreeq
+      shouldPlayPostPrayerTakbeer: eidFitr || tashreeq,
+    };
+  } catch (error) {
+    console.error('Error checking Eid:', error.message);
+    return {
+      isEid: false, eidType: null, eidDay: null, hijriDate: null,
+      shouldPlayPreEidTakbeer: false, shouldPlayPostPrayerTakbeer: false,
+    };
+  }
+}
+
+/**
+ * Check if today is Friday (for Khutbah).
+ */
+function isFriday(date) {
+  return date.getDay() === 5;
+}
+
 module.exports = {
   gregorianToHijri,
   getHijriDate,
   getRamadanCalendar,
   checkRamadan,
   calculateImsakTime,
+  isEidAlFitr,
+  isEidAlAdha,
+  isDaysOfTashreeq,
+  checkEid,
+  isFriday,
 };

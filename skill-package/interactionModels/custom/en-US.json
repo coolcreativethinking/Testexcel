@@ -253,6 +253,48 @@
           ]
         },
         {
+          "name": "PlayEidTakbeerIntent",
+          "slots": [],
+          "samples": [
+            "play eid takbeer",
+            "play takbeer",
+            "start eid takbeer",
+            "play the eid recitation",
+            "eid takbeer please",
+            "play eid al fitr takbeer",
+            "play eid al adha takbeer",
+            "takbeer"
+          ]
+        },
+        {
+          "name": "GetEidInfoIntent",
+          "slots": [],
+          "samples": [
+            "is it eid",
+            "eid information",
+            "when is eid",
+            "what day of eid is it",
+            "eid status",
+            "is today eid"
+          ]
+        },
+        {
+          "name": "PlayKhutbahIntent",
+          "slots": [
+            { "name": "KhutbahSource", "type": "KHUTBAH_SOURCE" }
+          ],
+          "samples": [
+            "play friday khutbah",
+            "play khutbah",
+            "friday sermon",
+            "play khutbah from {KhutbahSource}",
+            "listen to the khutbah",
+            "play the friday sermon from {KhutbahSource}",
+            "live khutbah",
+            "khutbah from {KhutbahSource}"
+          ]
+        },
+        {
           "name": "AMAZON.PauseIntent",
           "samples": []
         },
@@ -480,6 +522,15 @@
           "values": [
             { "name": { "value": "on", "synonyms": ["enable", "yes", "activate"] } },
             { "name": { "value": "off", "synonyms": ["disable", "no", "deactivate"] } }
+          ]
+        },
+        {
+          "name": "KHUTBAH_SOURCE",
+          "values": [
+            { "name": { "value": "Makkah", "synonyms": ["Mecca", "Haram", "Masjid al-Haram"] } },
+            { "name": { "value": "Madinah", "synonyms": ["Medina", "Prophet's Mosque"] } },
+            { "name": { "value": "Egypt", "synonyms": ["Cairo", "Al-Azhar", "Egyptian"] } },
+            { "name": { "value": "UAE", "synonyms": ["Dubai", "Emirates", "Abu Dhabi", "Sheikh Zayed"] } }
           ]
         }
       ]

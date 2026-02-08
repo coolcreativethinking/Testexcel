@@ -5,7 +5,7 @@ const { STRINGS, DEFAULT_IQAMA_OFFSETS, AZAN_PRAYERS } = require('../utils/const
 const { supportsAPL, formatTime, sprintf, getNextPrayer } = require('../utils/helpers');
 const { getPrayerTimes } = require('../services/prayerTimeService');
 const { getDeviceAddress } = require('../services/locationService');
-const { checkRamadan, calculateImsakTime, getHijriDate } = require('../services/hijriCalendarService');
+const { checkRamadan, calculateImsakTime, getHijriDate, checkEid } = require('../services/hijriCalendarService');
 
 function getLocale(handlerInput) {
   const attrs = handlerInput.attributesManager.getSessionAttributes();
@@ -66,15 +66,32 @@ const LaunchRequestHandler = {
     let speechParts = [str(handlerInput, 'WELCOME_RETURNING')];
     const now = new Date();
 
-    // Get Hijri date and Ramadan status
+    // Get Hijri date, Ramadan, and Eid status
     let hijriDate = null;
     let isRamadan = false;
+    let eidStatus = null;
     try {
       hijriDate = await getHijriDate(now, locale);
       isRamadan = hijriDate.isRamadan;
       speechParts.push(sprintf(str(handlerInput, 'HIJRI_DATE'), String(hijriDate.day), hijriDate.monthName, String(hijriDate.year)));
       if (isRamadan) {
         speechParts.push(str(handlerInput, 'RAMADAN_GREETING'));
+      }
+
+      // Check Eid status
+      eidStatus = await checkEid(now, locale);
+      if (eidStatus.isEid) {
+        const eidName = eidStatus.eidType === 'fitr'
+          ? str(handlerInput, 'EID_FITR_NAME')
+          : str(handlerInput, 'EID_ADHA_NAME');
+        speechParts.push(sprintf(str(handlerInput, 'EID_GREETING'), eidName));
+        speechParts.push(sprintf(str(handlerInput, 'EID_DAY'), String(eidStatus.eidDay)));
+        if (eidStatus.shouldPlayPreEidTakbeer) {
+          speechParts.push(str(handlerInput, 'EID_TAKBEER_REMINDER'));
+        }
+        if (eidStatus.shouldPlayPostPrayerTakbeer) {
+          speechParts.push(str(handlerInput, 'EID_POST_PRAYER_TAKBEER'));
+        }
       }
     } catch (e) {
       console.log('Hijri date fetch failed:', e.message);
@@ -130,12 +147,31 @@ const LaunchRequestHandler = {
       sessionAttributes.city = result.city;
       attributesManager.setSessionAttributes(sessionAttributes);
 
-      // APL display with Iqama times
+      // APL display with Iqama times and Eid info
       if (supportsAPL(handlerInput)) {
         const iqamaOffsets = userSettings.iqamaOffsets || DEFAULT_IQAMA_OFFSETS;
         responseBuilder.addDirective(
-          buildPrayerTimesAPL(t, result.city, iqamaOffsets, hijriDate, isRamadan, userSettings.taraweehTime)
+          buildPrayerTimesAPL(t, result.city, iqamaOffsets, hijriDate, isRamadan, userSettings.taraweehTime, eidStatus)
         );
+      }
+
+      // If we're between Azan and Iqama, also send countdown info in session
+      if (nextPrayer && nextPrayer.time instanceof Date) {
+        const iqamaOffsets = userSettings.iqamaOffsets || DEFAULT_IQAMA_OFFSETS;
+        // Find the most recent past prayer for countdown
+        const azanPrayers = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
+        for (const prayer of azanPrayers) {
+          const pt = t[prayer];
+          if (pt instanceof Date && pt <= now && iqamaOffsets[prayer]) {
+            const iqamaTime = new Date(pt.getTime() + iqamaOffsets[prayer] * 60000);
+            if (iqamaTime > now) {
+              const minutesLeft = Math.ceil((iqamaTime.getTime() - now.getTime()) / 60000);
+              speechParts.push(sprintf(str(handlerInput, 'COUNTDOWN_IQAMA'), prayer, String(minutesLeft)));
+              sessionAttributes.countdownPrayer = prayer;
+              sessionAttributes.countdownIqamaTime = iqamaTime.toISOString();
+            }
+          }
+        }
       }
     } catch (error) {
       console.error('Error fetching prayer times:', error);
@@ -167,7 +203,7 @@ function buildWelcomeAPL() {
   };
 }
 
-function buildPrayerTimesAPL(times, city, iqamaOffsets, hijriDate, isRamadan, taraweehTime) {
+function buildPrayerTimesAPL(times, city, iqamaOffsets, hijriDate, isRamadan, taraweehTime, eidStatus) {
   const prayerData = {};
   const iqamaData = {};
 
@@ -198,6 +234,10 @@ function buildPrayerTimesAPL(times, city, iqamaOffsets, hijriDate, isRamadan, ta
           iqama: iqamaData,
           hijriDate: hijriDate ? `${hijriDate.day} ${hijriDate.monthName} ${hijriDate.year}` : '',
           isRamadan: isRamadan || false,
+          isEid: eidStatus && eidStatus.isEid ? true : false,
+          eidMessage: eidStatus && eidStatus.isEid
+            ? `${eidStatus.eidType === 'fitr' ? 'Eid Al-Fitr' : 'Eid Al-Adha'} Mubarak - Day ${eidStatus.eidDay}`
+            : '',
           taraweehTime: taraweehTime || '',
         },
       },

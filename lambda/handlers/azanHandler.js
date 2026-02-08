@@ -11,8 +11,9 @@ const {
 } = require('../utils/helpers');
 const { getPrayerTimes } = require('../services/prayerTimeService');
 const { getAzanUrl, addPlayDirective } = require('../services/audioService');
-const { checkRamadan } = require('../services/hijriCalendarService');
+const { checkRamadan, checkEid } = require('../services/hijriCalendarService');
 const { getPreAzanRecitationUrls } = require('../services/quranService');
+const { EID_AUDIO } = require('../utils/constants');
 
 function getLocale(handlerInput) {
   const attrs = handlerInput.attributesManager.getSessionAttributes();
@@ -113,6 +114,19 @@ const PlayAzanIntentHandler = {
       } catch (e) {
         console.log('Pre-Azan Quran error, proceeding with Azan only:', e.message);
       }
+    }
+
+    // Check if we should queue post-prayer Eid takbeer
+    try {
+      const eidStatus = await checkEid(new Date(), locale);
+      if (eidStatus.shouldPlayPostPrayerTakbeer) {
+        const sa = attributesManager.getSessionAttributes();
+        sa.pendingPostPrayerTakbeer = true;
+        sa.pendingPostPrayerTakbeerUrl = EID_AUDIO.takbeerPostPrayer;
+        attributesManager.setSessionAttributes(sa);
+      }
+    } catch (e) {
+      console.log('Eid check error:', e.message);
     }
 
     // Save playback state

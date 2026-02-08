@@ -135,6 +135,43 @@
             "ذكرني بصلاة {PrayerName}"
           ]
         },
+        {
+          "name": "PlayEidTakbeerIntent",
+          "slots": [],
+          "samples": [
+            "شغل تكبيرات العيد",
+            "تكبيرات",
+            "شغل التكبيرات",
+            "تكبيرات عيد الفطر",
+            "تكبيرات عيد الأضحى",
+            "ابدأ التكبيرات"
+          ]
+        },
+        {
+          "name": "GetEidInfoIntent",
+          "slots": [],
+          "samples": [
+            "هل اليوم عيد",
+            "معلومات العيد",
+            "متى العيد",
+            "أي يوم من العيد",
+            "هل نحن في العيد"
+          ]
+        },
+        {
+          "name": "PlayKhutbahIntent",
+          "slots": [
+            { "name": "KhutbahSource", "type": "KHUTBAH_SOURCE" }
+          ],
+          "samples": [
+            "شغل خطبة الجمعة",
+            "خطبة الجمعة",
+            "شغل الخطبة",
+            "خطبة من {KhutbahSource}",
+            "شغل خطبة من {KhutbahSource}",
+            "خطبة مباشرة"
+          ]
+        },
         { "name": "AMAZON.PauseIntent", "samples": [] },
         { "name": "AMAZON.ResumeIntent", "samples": [] },
         { "name": "AMAZON.StopIntent", "samples": [] },
@@ -191,6 +228,15 @@
           "values": [
             { "name": { "value": "تشغيل", "synonyms": ["فعل", "نعم"] } },
             { "name": { "value": "إيقاف", "synonyms": ["ألغ", "لا"] } }
+          ]
+        },
+        {
+          "name": "KHUTBAH_SOURCE",
+          "values": [
+            { "name": { "value": "مكة", "synonyms": ["الحرم", "المسجد الحرام"] } },
+            { "name": { "value": "المدينة", "synonyms": ["المسجد النبوي"] } },
+            { "name": { "value": "مصر", "synonyms": ["القاهرة", "الأزهر"] } },
+            { "name": { "value": "الإمارات", "synonyms": ["دبي", "أبوظبي", "الشيخ زايد"] } }
           ]
         }
       ]

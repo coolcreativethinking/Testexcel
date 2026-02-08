@@ -16,6 +16,8 @@ const {
   GetRamadanInfoIntentHandler,
   TogglePreAzanQuranIntentHandler,
 } = require('./handlers/ramadanHandler');
+const { PlayEidTakbeerIntentHandler, GetEidInfoIntentHandler } = require('./handlers/eidHandler');
+const { PlayKhutbahIntentHandler } = require('./handlers/khutbahHandler');
 const {
   PlaybackStartedHandler,
   PlaybackFinishedHandler,
@@ -123,6 +125,13 @@ const skillBuilder = Alexa.SkillBuilders.custom()
     PlayQuranIntentHandler,
     GetRamadanInfoIntentHandler,
     TogglePreAzanQuranIntentHandler,
+
+    // Eid
+    PlayEidTakbeerIntentHandler,
+    GetEidInfoIntentHandler,
+
+    // Friday Khutbah
+    PlayKhutbahIntentHandler,
 
     // Reminders
     SetReminderIntentHandler,

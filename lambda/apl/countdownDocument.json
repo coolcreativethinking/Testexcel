@@ -1,0 +1,118 @@
+{
+  "type": "APL",
+  "version": "2024.2",
+  "description": "My Azan - Iqama Countdown Timer",
+  "theme": "dark",
+  "mainTemplate": {
+    "parameters": [
+      "templateData"
+    ],
+    "items": [
+      {
+        "type": "Container",
+        "width": "100vw",
+        "height": "100vh",
+        "items": [
+          {
+            "type": "Image",
+            "width": "100vw",
+            "height": "100vh",
+            "position": "absolute",
+            "scale": "best-fill",
+            "source": "https://YOUR_CLOUDFRONT_DOMAIN/assets/mosque-bg-1200.png",
+            "overlayColor": "rgba(0, 20, 50, 0.90)"
+          },
+          {
+            "type": "Container",
+            "width": "100vw",
+            "height": "100vh",
+            "justifyContent": "center",
+            "alignItems": "center",
+            "items": [
+              {
+                "type": "Text",
+                "text": "${templateData.properties.prayerName}",
+                "fontSize": "36dp",
+                "fontWeight": "bold",
+                "color": "#D4AF37",
+                "textAlign": "center",
+                "paddingBottom": "8dp"
+              },
+              {
+                "type": "Text",
+                "text": "${templateData.properties.statusLabel}",
+                "fontSize": "20dp",
+                "color": "#808080",
+                "textAlign": "center",
+                "paddingBottom": "16dp"
+              },
+              {
+                "type": "Text",
+                "text": "${templateData.properties.countdownDisplay}",
+                "fontSize": "96dp",
+                "fontWeight": "bold",
+                "color": "#FFFFFF",
+                "textAlign": "center",
+                "paddingBottom": "16dp"
+              },
+              {
+                "type": "Text",
+                "text": "${templateData.properties.minutesLabel}",
+                "fontSize": "24dp",
+                "color": "#90CAF9",
+                "textAlign": "center",
+                "paddingBottom": "24dp"
+              },
+              {
+                "type": "Container",
+                "width": "60%",
+                "height": "8dp",
+                "borderRadius": "4dp",
+                "backgroundColor": "#333333",
+                "items": [
+                  {
+                    "type": "Frame",
+                    "width": "${templateData.properties.progressPercent}%",
+                    "height": "8dp",
+                    "borderRadius": "4dp",
+                    "backgroundColor": "#D4AF37"
+                  }
+                ]
+              },
+              {
+                "type": "Container",
+                "direction": "row",
+                "justifyContent": "spaceBetween",
+                "width": "60%",
+                "paddingTop": "8dp",
+                "items": [
+                  {
+                    "type": "Text",
+                    "text": "Azan: ${templateData.properties.azanTime}",
+                    "fontSize": "16dp",
+                    "color": "#E0E0E0"
+                  },
+                  {
+                    "type": "Text",
+                    "text": "Iqama: ${templateData.properties.iqamaTime}",
+                    "fontSize": "16dp",
+                    "color": "#90CAF9"
+                  }
+                ]
+              },
+              {
+                "when": "${templateData.properties.hint != ''}",
+                "type": "Text",
+                "text": "${templateData.properties.hint}",
+                "fontSize": "14dp",
+                "color": "#606060",
+                "textAlign": "center",
+                "paddingTop": "24dp"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
