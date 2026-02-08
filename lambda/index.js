@@ -9,6 +9,13 @@ const { PlayAzanIntentHandler } = require('./handlers/azanHandler');
 const { GetPrayerTimeIntentHandler, GetAllPrayerTimesIntentHandler } = require('./handlers/prayerTimeHandler');
 const { SetCityIntentHandler, SetMethodIntentHandler } = require('./handlers/settingsHandler');
 const { SetReminderIntentHandler } = require('./handlers/reminderHandler');
+const { SetReciterIntentHandler, SetSpeedIntentHandler, SetIqamaIntentHandler } = require('./handlers/reciterHandler');
+const {
+  SetTaraweehIntentHandler,
+  PlayQuranIntentHandler,
+  GetRamadanInfoIntentHandler,
+  TogglePreAzanQuranIntentHandler,
+} = require('./handlers/ramadanHandler');
 const {
   PlaybackStartedHandler,
   PlaybackFinishedHandler,
@@ -29,16 +36,6 @@ const {
   ErrorHandler,
 } = require('./handlers/builtInHandler');
 
-/**
- * Persistence adapter using S3.
- *
- * For production, you may want to use DynamoDB instead:
- *   const { DynamoDbPersistenceAdapter } = require('ask-sdk-dynamodb-persistence-adapter');
- *   const persistenceAdapter = new DynamoDbPersistenceAdapter({
- *     tableName: 'AzanSkillUserData',
- *     createTable: true,
- *   });
- */
 const persistenceAdapter = new S3PersistenceAdapter({
   bucketName: process.env.S3_PERSISTENCE_BUCKET || 'alexa-azan-skill-data',
 });
@@ -51,8 +48,6 @@ const LoadPersistentAttributesInterceptor = {
     if (handlerInput.requestEnvelope.session) {
       const persistentAttributes = await handlerInput.attributesManager.getPersistentAttributes();
       const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
-
-      // Merge persistent into session (session takes precedence)
       const merged = { ...persistentAttributes, ...sessionAttributes };
       handlerInput.attributesManager.setSessionAttributes(merged);
     }
@@ -64,14 +59,23 @@ const LoadPersistentAttributesInterceptor = {
  */
 const SavePersistentAttributesInterceptor = {
   async process(handlerInput) {
-    // Only save if we have a session (AudioPlayer events don't have sessions)
     if (handlerInput.requestEnvelope.session) {
       const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
 
-      // Only persist user settings, not transient session data
+      // All user settings that should persist across sessions
       const persistKeys = [
         'city', 'country', 'latitude', 'longitude', 'timezone',
-        'calculationMethod', 'azanSound', 'remindersEnabled',
+        'calculationMethod', 'locale',
+        // Reciter & audio
+        'azanReciter', 'azanSpeed',
+        // Iqama
+        'iqamaOffsets',
+        // Ramadan & Quran
+        'preAzanQuranEnabled', 'preAzanQuranReciter',
+        'ramadanRecitalsEnabled', 'taraweehTime',
+        // Reminders
+        'remindersEnabled',
+        // Playback state
         'lastPlayedUrl', 'playbackOffset', 'playbackToken',
       ];
 
@@ -102,15 +106,28 @@ const skillBuilder = Alexa.SkillBuilders.custom()
     // Launch
     LaunchRequestHandler,
 
-    // Custom intents
+    // Custom intents - Azan & Prayer
     PlayAzanIntentHandler,
     GetPrayerTimeIntentHandler,
     GetAllPrayerTimesIntentHandler,
+
+    // Settings
     SetCityIntentHandler,
     SetMethodIntentHandler,
+    SetReciterIntentHandler,
+    SetSpeedIntentHandler,
+    SetIqamaIntentHandler,
+
+    // Ramadan & Quran
+    SetTaraweehIntentHandler,
+    PlayQuranIntentHandler,
+    GetRamadanInfoIntentHandler,
+    TogglePreAzanQuranIntentHandler,
+
+    // Reminders
     SetReminderIntentHandler,
 
-    // AudioPlayer events (must be before generic intent handlers)
+    // AudioPlayer events
     PlaybackStartedHandler,
     PlaybackFinishedHandler,
     PlaybackStoppedHandler,

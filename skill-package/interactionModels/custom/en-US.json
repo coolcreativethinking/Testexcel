@@ -145,6 +145,114 @@
           ]
         },
         {
+          "name": "SetReciterIntent",
+          "slots": [
+            { "name": "ReciterName", "type": "AZAN_RECITER" }
+          ],
+          "samples": [
+            "set reciter to {ReciterName}",
+            "change reciter to {ReciterName}",
+            "change muezzin to {ReciterName}",
+            "use {ReciterName} azan",
+            "play {ReciterName} voice",
+            "switch reciter to {ReciterName}",
+            "set the muezzin to {ReciterName}",
+            "I want {ReciterName} azan",
+            "list reciters",
+            "who are the reciters",
+            "available reciters"
+          ]
+        },
+        {
+          "name": "SetSpeedIntent",
+          "slots": [
+            { "name": "SpeedLevel", "type": "AZAN_SPEED" }
+          ],
+          "samples": [
+            "set azan speed to {SpeedLevel}",
+            "change speed to {SpeedLevel}",
+            "make the azan {SpeedLevel}",
+            "set speed {SpeedLevel}",
+            "play azan {SpeedLevel}",
+            "{SpeedLevel} azan speed",
+            "make it {SpeedLevel}"
+          ]
+        },
+        {
+          "name": "SetIqamaIntent",
+          "slots": [
+            { "name": "PrayerName", "type": "PRAYER_NAME" },
+            { "name": "IqamaMinutes", "type": "AMAZON.NUMBER" }
+          ],
+          "samples": [
+            "set iqama for {PrayerName} to {IqamaMinutes} minutes",
+            "change iqama for {PrayerName} to {IqamaMinutes} minutes",
+            "set {PrayerName} iqama to {IqamaMinutes} minutes",
+            "{PrayerName} iqama is {IqamaMinutes} minutes",
+            "iqama for {PrayerName} is {IqamaMinutes} minutes after azan",
+            "set iqama time"
+          ]
+        },
+        {
+          "name": "SetTaraweehIntent",
+          "slots": [
+            { "name": "TaraweehTime", "type": "AMAZON.TIME" }
+          ],
+          "samples": [
+            "set taraweeh time to {TaraweehTime}",
+            "taraweeh is at {TaraweehTime}",
+            "set taraweeh to {TaraweehTime}",
+            "my mosque taraweeh is at {TaraweehTime}",
+            "change taraweeh time to {TaraweehTime}",
+            "night prayer is at {TaraweehTime}"
+          ]
+        },
+        {
+          "name": "PlayQuranIntent",
+          "slots": [
+            { "name": "SurahNumber", "type": "AMAZON.NUMBER" }
+          ],
+          "samples": [
+            "read quran",
+            "play quran",
+            "read quran before the azan",
+            "play quran recitation",
+            "play surah {SurahNumber}",
+            "read surah {SurahNumber}",
+            "quran recitation",
+            "play some quran"
+          ]
+        },
+        {
+          "name": "GetRamadanInfoIntent",
+          "slots": [],
+          "samples": [
+            "what day of ramadan is it",
+            "ramadan information",
+            "is it ramadan",
+            "when is iftar",
+            "when does suhoor end",
+            "what is the hijri date",
+            "islamic date",
+            "hijri date today",
+            "ramadan schedule"
+          ]
+        },
+        {
+          "name": "TogglePreAzanQuranIntent",
+          "slots": [
+            { "name": "ToggleState", "type": "TOGGLE_STATE" }
+          ],
+          "samples": [
+            "enable quran before azan",
+            "disable quran before azan",
+            "turn {ToggleState} pre azan quran",
+            "{ToggleState} quran before azan",
+            "I want quran before the azan",
+            "no quran before azan"
+          ]
+        },
+        {
           "name": "AMAZON.PauseIntent",
           "samples": []
         },
@@ -346,6 +454,32 @@
                 "synonyms": []
               }
             }
+          ]
+        },
+        {
+          "name": "AZAN_RECITER",
+          "values": [
+            { "name": { "value": "Makkah", "synonyms": ["Mecca", "Ali Ahmed Mullah", "Haram"] } },
+            { "name": { "value": "Madinah", "synonyms": ["Medina", "Prophet's Mosque"] } },
+            { "name": { "value": "Al-Afasy", "synonyms": ["Mishary", "Mishary Al-Afasy", "Afasy"] } },
+            { "name": { "value": "Abdul Basit", "synonyms": ["Abdulbasit", "Basit"] } },
+            { "name": { "value": "Sudais", "synonyms": ["As-Sudais", "Abdur-Rahman"] } },
+            { "name": { "value": "Al-Ghamidi", "synonyms": ["Ghamidi", "Saad Al-Ghamidi"] } }
+          ]
+        },
+        {
+          "name": "AZAN_SPEED",
+          "values": [
+            { "name": { "value": "slow", "synonyms": ["slower", "leisurely"] } },
+            { "name": { "value": "normal", "synonyms": ["regular", "default", "standard"] } },
+            { "name": { "value": "fast", "synonyms": ["faster", "quick", "slightly fast"] } }
+          ]
+        },
+        {
+          "name": "TOGGLE_STATE",
+          "values": [
+            { "name": { "value": "on", "synonyms": ["enable", "yes", "activate"] } },
+            { "name": { "value": "off", "synonyms": ["disable", "no", "deactivate"] } }
           ]
         }
       ]

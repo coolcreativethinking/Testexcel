@@ -1,0 +1,199 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "أذاني",
+      "intents": [
+        {
+          "name": "PlayAzanIntent",
+          "slots": [{ "name": "PrayerName", "type": "PRAYER_NAME" }],
+          "samples": [
+            "شغل الأذان",
+            "أذان",
+            "شغل أذان {PrayerName}",
+            "أريد سماع الأذان",
+            "ابدأ الأذان"
+          ]
+        },
+        {
+          "name": "GetPrayerTimeIntent",
+          "slots": [
+            { "name": "PrayerName", "type": "PRAYER_NAME" },
+            { "name": "CityName", "type": "AMAZON.City" }
+          ],
+          "samples": [
+            "ما وقت {PrayerName}",
+            "متى {PrayerName}",
+            "وقت صلاة {PrayerName}",
+            "متى الصلاة القادمة",
+            "الصلاة التالية"
+          ]
+        },
+        {
+          "name": "GetAllPrayerTimesIntent",
+          "slots": [{ "name": "CityName", "type": "AMAZON.City" }],
+          "samples": [
+            "مواقيت الصلاة",
+            "ما مواقيت الصلاة اليوم",
+            "جميع أوقات الصلاة",
+            "جدول الصلاة"
+          ]
+        },
+        {
+          "name": "SetCityIntent",
+          "slots": [{ "name": "CityName", "type": "AMAZON.City" }],
+          "samples": [
+            "اضبط مدينتي على {CityName}",
+            "غير مدينتي إلى {CityName}",
+            "أنا في {CityName}",
+            "مدينتي {CityName}"
+          ]
+        },
+        {
+          "name": "SetMethodIntent",
+          "slots": [{ "name": "MethodName", "type": "CALCULATION_METHOD" }],
+          "samples": [
+            "اضبط طريقة الحساب على {MethodName}",
+            "غير الطريقة إلى {MethodName}",
+            "استخدم طريقة {MethodName}"
+          ]
+        },
+        {
+          "name": "SetReciterIntent",
+          "slots": [{ "name": "ReciterName", "type": "AZAN_RECITER" }],
+          "samples": [
+            "غير المؤذن إلى {ReciterName}",
+            "اضبط المؤذن على {ReciterName}",
+            "أريد أذان {ReciterName}",
+            "من هم المؤذنون"
+          ]
+        },
+        {
+          "name": "SetSpeedIntent",
+          "slots": [{ "name": "SpeedLevel", "type": "AZAN_SPEED" }],
+          "samples": [
+            "اضبط سرعة الأذان على {SpeedLevel}",
+            "غير السرعة إلى {SpeedLevel}",
+            "أذان {SpeedLevel}"
+          ]
+        },
+        {
+          "name": "SetIqamaIntent",
+          "slots": [
+            { "name": "PrayerName", "type": "PRAYER_NAME" },
+            { "name": "IqamaMinutes", "type": "AMAZON.NUMBER" }
+          ],
+          "samples": [
+            "اضبط إقامة {PrayerName} على {IqamaMinutes} دقيقة",
+            "إقامة {PrayerName} بعد {IqamaMinutes} دقيقة"
+          ]
+        },
+        {
+          "name": "SetTaraweehIntent",
+          "slots": [{ "name": "TaraweehTime", "type": "AMAZON.TIME" }],
+          "samples": [
+            "اضبط وقت التراويح على {TaraweehTime}",
+            "التراويح الساعة {TaraweehTime}"
+          ]
+        },
+        {
+          "name": "PlayQuranIntent",
+          "slots": [{ "name": "SurahNumber", "type": "AMAZON.NUMBER" }],
+          "samples": [
+            "اقرأ قرآن",
+            "شغل قرآن",
+            "شغل سورة {SurahNumber}",
+            "تلاوة قرآن"
+          ]
+        },
+        {
+          "name": "GetRamadanInfoIntent",
+          "slots": [],
+          "samples": [
+            "أي يوم من رمضان",
+            "معلومات رمضان",
+            "هل نحن في رمضان",
+            "متى الإفطار",
+            "متى ينتهي السحور",
+            "التاريخ الهجري"
+          ]
+        },
+        {
+          "name": "TogglePreAzanQuranIntent",
+          "slots": [{ "name": "ToggleState", "type": "TOGGLE_STATE" }],
+          "samples": [
+            "فعل القرآن قبل الأذان",
+            "ألغ القرآن قبل الأذان",
+            "{ToggleState} قرآن قبل الأذان"
+          ]
+        },
+        {
+          "name": "SetReminderIntent",
+          "slots": [{ "name": "PrayerName", "type": "PRAYER_NAME" }],
+          "samples": [
+            "اضبط التذكيرات",
+            "ذكرني بالصلاة",
+            "ذكرني بصلاة {PrayerName}"
+          ]
+        },
+        { "name": "AMAZON.PauseIntent", "samples": [] },
+        { "name": "AMAZON.ResumeIntent", "samples": [] },
+        { "name": "AMAZON.StopIntent", "samples": [] },
+        { "name": "AMAZON.CancelIntent", "samples": [] },
+        { "name": "AMAZON.HelpIntent", "samples": [] },
+        { "name": "AMAZON.FallbackIntent", "samples": [] },
+        { "name": "AMAZON.NavigateHomeIntent", "samples": [] },
+        { "name": "AMAZON.YesIntent", "samples": [] },
+        { "name": "AMAZON.NoIntent", "samples": [] }
+      ],
+      "types": [
+        {
+          "name": "PRAYER_NAME",
+          "values": [
+            { "name": { "value": "الفجر", "synonyms": ["فجر", "صلاة الفجر", "الصبح"] } },
+            { "name": { "value": "الظهر", "synonyms": ["ظهر", "صلاة الظهر"] } },
+            { "name": { "value": "العصر", "synonyms": ["عصر", "صلاة العصر"] } },
+            { "name": { "value": "المغرب", "synonyms": ["مغرب", "صلاة المغرب"] } },
+            { "name": { "value": "العشاء", "synonyms": ["عشاء", "صلاة العشاء"] } }
+          ]
+        },
+        {
+          "name": "CALCULATION_METHOD",
+          "values": [
+            { "name": { "value": "أم القرى", "synonyms": ["مكة"] } },
+            { "name": { "value": "الهيئة المصرية", "synonyms": ["مصر"] } },
+            { "name": { "value": "رابطة العالم الإسلامي", "synonyms": [] } },
+            { "name": { "value": "كراتشي", "synonyms": ["باكستان"] } },
+            { "name": { "value": "طهران", "synonyms": ["إيران"] } },
+            { "name": { "value": "جعفري", "synonyms": ["شيعة"] } }
+          ]
+        },
+        {
+          "name": "AZAN_RECITER",
+          "values": [
+            { "name": { "value": "مكة", "synonyms": ["المكي", "الحرم"] } },
+            { "name": { "value": "المدينة", "synonyms": ["المدني"] } },
+            { "name": { "value": "العفاسي", "synonyms": ["مشاري"] } },
+            { "name": { "value": "عبد الباسط", "synonyms": [] } },
+            { "name": { "value": "السديس", "synonyms": [] } },
+            { "name": { "value": "الغامدي", "synonyms": ["سعد"] } }
+          ]
+        },
+        {
+          "name": "AZAN_SPEED",
+          "values": [
+            { "name": { "value": "بطيء", "synonyms": ["أبطأ"] } },
+            { "name": { "value": "عادي", "synonyms": ["طبيعي"] } },
+            { "name": { "value": "سريع", "synonyms": ["أسرع"] } }
+          ]
+        },
+        {
+          "name": "TOGGLE_STATE",
+          "values": [
+            { "name": { "value": "تشغيل", "synonyms": ["فعل", "نعم"] } },
+            { "name": { "value": "إيقاف", "synonyms": ["ألغ", "لا"] } }
+          ]
+        }
+      ]
+    }
+  }
+}

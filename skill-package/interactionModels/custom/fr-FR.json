@@ -1,0 +1,201 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "mon adhan",
+      "intents": [
+        {
+          "name": "PlayAzanIntent",
+          "slots": [{ "name": "PrayerName", "type": "PRAYER_NAME" }],
+          "samples": [
+            "jouer l'adhan",
+            "lance l'adhan",
+            "l'appel à la prière",
+            "jouer l'adhan de {PrayerName}",
+            "je veux entendre l'adhan",
+            "adhan s'il vous plaît"
+          ]
+        },
+        {
+          "name": "GetPrayerTimeIntent",
+          "slots": [
+            { "name": "PrayerName", "type": "PRAYER_NAME" },
+            { "name": "CityName", "type": "AMAZON.City" }
+          ],
+          "samples": [
+            "quelle heure est {PrayerName}",
+            "quand est {PrayerName}",
+            "heure de {PrayerName}",
+            "prochaine prière",
+            "quelle est la prochaine prière"
+          ]
+        },
+        {
+          "name": "GetAllPrayerTimesIntent",
+          "slots": [{ "name": "CityName", "type": "AMAZON.City" }],
+          "samples": [
+            "horaires de prière",
+            "quels sont les horaires de prière",
+            "toutes les prières",
+            "programme de prière"
+          ]
+        },
+        {
+          "name": "SetCityIntent",
+          "slots": [{ "name": "CityName", "type": "AMAZON.City" }],
+          "samples": [
+            "définir ma ville sur {CityName}",
+            "changer ma ville en {CityName}",
+            "je suis à {CityName}",
+            "ma ville est {CityName}"
+          ]
+        },
+        {
+          "name": "SetMethodIntent",
+          "slots": [{ "name": "MethodName", "type": "CALCULATION_METHOD" }],
+          "samples": [
+            "définir la méthode de calcul sur {MethodName}",
+            "changer la méthode en {MethodName}",
+            "utiliser la méthode {MethodName}"
+          ]
+        },
+        {
+          "name": "SetReciterIntent",
+          "slots": [{ "name": "ReciterName", "type": "AZAN_RECITER" }],
+          "samples": [
+            "changer le muezzin en {ReciterName}",
+            "définir le muezzin sur {ReciterName}",
+            "je veux l'adhan de {ReciterName}",
+            "quels sont les muezzins disponibles"
+          ]
+        },
+        {
+          "name": "SetSpeedIntent",
+          "slots": [{ "name": "SpeedLevel", "type": "AZAN_SPEED" }],
+          "samples": [
+            "régler la vitesse de l'adhan sur {SpeedLevel}",
+            "changer la vitesse en {SpeedLevel}",
+            "adhan {SpeedLevel}"
+          ]
+        },
+        {
+          "name": "SetIqamaIntent",
+          "slots": [
+            { "name": "PrayerName", "type": "PRAYER_NAME" },
+            { "name": "IqamaMinutes", "type": "AMAZON.NUMBER" }
+          ],
+          "samples": [
+            "définir l'iqama de {PrayerName} à {IqamaMinutes} minutes",
+            "iqama de {PrayerName} après {IqamaMinutes} minutes"
+          ]
+        },
+        {
+          "name": "SetTaraweehIntent",
+          "slots": [{ "name": "TaraweehTime", "type": "AMAZON.TIME" }],
+          "samples": [
+            "définir l'heure de tarawih à {TaraweehTime}",
+            "tarawih est à {TaraweehTime}"
+          ]
+        },
+        {
+          "name": "PlayQuranIntent",
+          "slots": [{ "name": "SurahNumber", "type": "AMAZON.NUMBER" }],
+          "samples": [
+            "lire le coran",
+            "jouer le coran",
+            "jouer sourate {SurahNumber}",
+            "récitation du coran"
+          ]
+        },
+        {
+          "name": "GetRamadanInfoIntent",
+          "slots": [],
+          "samples": [
+            "quel jour de ramadan",
+            "informations ramadan",
+            "est-ce ramadan",
+            "quand est l'iftar",
+            "quelle est la date hégirien",
+            "date islamique"
+          ]
+        },
+        {
+          "name": "TogglePreAzanQuranIntent",
+          "slots": [{ "name": "ToggleState", "type": "TOGGLE_STATE" }],
+          "samples": [
+            "activer le coran avant l'adhan",
+            "désactiver le coran avant l'adhan",
+            "{ToggleState} coran avant adhan"
+          ]
+        },
+        {
+          "name": "SetReminderIntent",
+          "slots": [{ "name": "PrayerName", "type": "PRAYER_NAME" }],
+          "samples": [
+            "activer les rappels",
+            "rappelle moi pour les prières",
+            "rappel pour {PrayerName}"
+          ]
+        },
+        { "name": "AMAZON.PauseIntent", "samples": [] },
+        { "name": "AMAZON.ResumeIntent", "samples": [] },
+        { "name": "AMAZON.StopIntent", "samples": [] },
+        { "name": "AMAZON.CancelIntent", "samples": [] },
+        { "name": "AMAZON.HelpIntent", "samples": [] },
+        { "name": "AMAZON.FallbackIntent", "samples": [] },
+        { "name": "AMAZON.NavigateHomeIntent", "samples": [] },
+        { "name": "AMAZON.YesIntent", "samples": [] },
+        { "name": "AMAZON.NoIntent", "samples": [] }
+      ],
+      "types": [
+        {
+          "name": "PRAYER_NAME",
+          "values": [
+            { "name": { "value": "Fajr", "synonyms": ["aube", "prière du matin", "sobh"] } },
+            { "name": { "value": "Dhuhr", "synonyms": ["midi", "prière de midi", "dohr"] } },
+            { "name": { "value": "Asr", "synonyms": ["après-midi", "prière de l'après-midi"] } },
+            { "name": { "value": "Maghrib", "synonyms": ["coucher du soleil", "prière du soir"] } },
+            { "name": { "value": "Isha", "synonyms": ["nuit", "prière de nuit"] } }
+          ]
+        },
+        {
+          "name": "CALCULATION_METHOD",
+          "values": [
+            { "name": { "value": "ISNA", "synonyms": ["Amérique du Nord"] } },
+            { "name": { "value": "MWL", "synonyms": ["Ligue Mondiale Musulmane"] } },
+            { "name": { "value": "Égyptien", "synonyms": ["Égypte"] } },
+            { "name": { "value": "Oum Al-Qura", "synonyms": ["La Mecque"] } },
+            { "name": { "value": "Karachi", "synonyms": ["Pakistan"] } },
+            { "name": { "value": "Téhéran", "synonyms": ["Iran"] } },
+            { "name": { "value": "Jafari", "synonyms": ["Chiite"] } }
+          ]
+        },
+        {
+          "name": "AZAN_RECITER",
+          "values": [
+            { "name": { "value": "La Mecque", "synonyms": ["Makkah", "Haram"] } },
+            { "name": { "value": "Médine", "synonyms": ["Madinah"] } },
+            { "name": { "value": "Al-Afasy", "synonyms": ["Mishary"] } },
+            { "name": { "value": "Abdul Basit", "synonyms": [] } },
+            { "name": { "value": "Sudais", "synonyms": [] } },
+            { "name": { "value": "Al-Ghamidi", "synonyms": [] } }
+          ]
+        },
+        {
+          "name": "AZAN_SPEED",
+          "values": [
+            { "name": { "value": "lent", "synonyms": ["plus lent"] } },
+            { "name": { "value": "normal", "synonyms": ["régulier", "standard"] } },
+            { "name": { "value": "rapide", "synonyms": ["plus rapide", "vite"] } }
+          ]
+        },
+        {
+          "name": "TOGGLE_STATE",
+          "values": [
+            { "name": { "value": "activer", "synonyms": ["oui", "allumer"] } },
+            { "name": { "value": "désactiver", "synonyms": ["non", "éteindre"] } }
+          ]
+        }
+      ]
+    }
+  }
+}
