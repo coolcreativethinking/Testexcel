@@ -1,0 +1,113 @@
+{
+  "manifest": {
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "uri": "arn:aws:lambda:us-east-1:XXXXXXXXXXXX:function:alexa-azan-skill"
+        },
+        "interfaces": [
+          {
+            "type": "AUDIO_PLAYER"
+          },
+          {
+            "type": "ALEXA_PRESENTATION_APL",
+            "supportedViewports": [
+              {
+                "mode": "HUB",
+                "shape": "RECTANGLE",
+                "minWidth": 1024,
+                "maxWidth": 1280,
+                "minHeight": 600,
+                "maxHeight": 800
+              },
+              {
+                "mode": "HUB",
+                "shape": "RECTANGLE",
+                "minWidth": 480,
+                "maxWidth": 480,
+                "minHeight": 480,
+                "maxHeight": 480
+              },
+              {
+                "mode": "HUB",
+                "shape": "ROUND",
+                "minWidth": 480,
+                "maxWidth": 480,
+                "minHeight": 480,
+                "maxHeight": 480
+              },
+              {
+                "mode": "TV",
+                "shape": "RECTANGLE",
+                "minWidth": 960,
+                "maxWidth": 1920,
+                "minHeight": 540,
+                "maxHeight": 1080
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "manifestVersion": "1.0",
+    "permissions": [
+      {
+        "name": "alexa::alerts:reminders:skill:readwrite"
+      },
+      {
+        "name": "read::alexa:device:all:address"
+      }
+    ],
+    "privacyAndCompliance": {
+      "allowsPurchases": false,
+      "usesPersonalInfo": true,
+      "isChildDirected": false,
+      "isExportCompliant": true,
+      "containsAds": false,
+      "locales": {
+        "en-US": {
+          "privacyPolicyUrl": "https://example.com/privacy",
+          "termsOfUseUrl": "https://example.com/terms"
+        }
+      }
+    },
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "name": "My Azan",
+          "summary": "Listen to the full Azan (Islamic call to prayer) at the right times for your city. Supports multiple calculation methods and works worldwide.",
+          "description": "My Azan plays the full, beautiful Azan (Adhan / call to prayer) on your Alexa device. It calculates accurate prayer times based on your city and preferred calculation method.\n\nFeatures:\n- Full Azan audio playback (~2 minutes)\n- Accurate prayer times for any city worldwide\n- Multiple calculation methods (ISNA, MWL, Egyptian, Umm Al-Qura, Karachi, and more)\n- Prayer schedule display on Echo Show devices\n- Set spoken reminders for each prayer\n- Works on all Alexa devices\n\nVoice Commands:\n- \"Alexa, open My Azan\" - Get current prayer info\n- \"Play the Azan\" - Hear the full call to prayer\n- \"What time is Fajr?\" - Get a specific prayer time\n- \"What are today's prayer times?\" - Full daily schedule\n- \"Set my city to Cairo\" - Configure your location\n\nFor automatic Azan at prayer times, set up Alexa Routines in the Alexa app with time triggers that open this skill.",
+          "examplePhrases": [
+            "Alexa, open My Azan",
+            "Alexa, ask My Azan to play the Azan",
+            "Alexa, ask My Azan what time is Fajr"
+          ],
+          "keywords": [
+            "azan",
+            "adhan",
+            "prayer",
+            "salah",
+            "namaz",
+            "islam",
+            "muslim",
+            "prayer times",
+            "fajr",
+            "dhuhr",
+            "asr",
+            "maghrib",
+            "isha",
+            "call to prayer",
+            "mosque"
+          ],
+          "smallIconUri": "https://example.com/icons/icon_108.png",
+          "largeIconUri": "https://example.com/icons/icon_512.png"
+        }
+      },
+      "isAvailableWorldwide": true,
+      "testingInstructions": "Grant device address permission when prompted. Say 'set my city to Mecca' to configure location. Then say 'play the azan' to hear the call to prayer. Say 'what are today's prayer times' to see the schedule.",
+      "category": "RELIGION_AND_SPIRITUALITY",
+      "distributionCountries": [],
+      "distributionMode": "PUBLIC"
+    }
+  }
+}

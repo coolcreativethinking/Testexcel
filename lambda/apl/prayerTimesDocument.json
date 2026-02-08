@@ -1,0 +1,266 @@
+{
+  "type": "APL",
+  "version": "2024.2",
+  "description": "My Azan - Prayer Times Display",
+  "theme": "dark",
+  "mainTemplate": {
+    "parameters": [
+      "templateData"
+    ],
+    "items": [
+      {
+        "type": "Container",
+        "width": "100vw",
+        "height": "100vh",
+        "items": [
+          {
+            "type": "Image",
+            "width": "100vw",
+            "height": "100vh",
+            "position": "absolute",
+            "scale": "best-fill",
+            "source": "https://YOUR_CLOUDFRONT_DOMAIN/assets/mosque-bg-1200.png",
+            "overlayColor": "rgba(0, 20, 50, 0.80)"
+          },
+          {
+            "type": "Container",
+            "width": "100vw",
+            "height": "100vh",
+            "paddingLeft": "5vw",
+            "paddingRight": "5vw",
+            "paddingTop": "3vh",
+            "items": [
+              {
+                "type": "Container",
+                "direction": "row",
+                "justifyContent": "spaceBetween",
+                "alignItems": "center",
+                "width": "100%",
+                "items": [
+                  {
+                    "type": "Text",
+                    "text": "${templateData.properties.title}",
+                    "fontSize": "36dp",
+                    "fontWeight": "bold",
+                    "color": "#FFFFFF"
+                  },
+                  {
+                    "type": "Text",
+                    "text": "${templateData.properties.city}",
+                    "fontSize": "22dp",
+                    "color": "#D4AF37"
+                  }
+                ]
+              },
+              {
+                "type": "Container",
+                "width": "100%",
+                "height": "2dp",
+                "backgroundColor": "#D4AF37",
+                "marginTop": "12dp",
+                "marginBottom": "16dp",
+                "opacity": 0.6
+              },
+              {
+                "type": "Container",
+                "width": "100%",
+                "grow": 1,
+                "justifyContent": "spaceEvenly",
+                "items": [
+                  {
+                    "type": "Container",
+                    "direction": "row",
+                    "justifyContent": "spaceBetween",
+                    "alignItems": "center",
+                    "width": "100%",
+                    "paddingLeft": "10%",
+                    "paddingRight": "10%",
+                    "paddingTop": "8dp",
+                    "paddingBottom": "8dp",
+                    "items": [
+                      {
+                        "type": "Text",
+                        "text": "Fajr",
+                        "fontSize": "26dp",
+                        "fontWeight": "bold",
+                        "color": "#FFFFFF",
+                        "width": "40%"
+                      },
+                      {
+                        "type": "Text",
+                        "text": "${templateData.properties.prayers.Fajr}",
+                        "fontSize": "26dp",
+                        "color": "#E0E0E0",
+                        "textAlign": "right",
+                        "width": "40%"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Container",
+                    "direction": "row",
+                    "justifyContent": "spaceBetween",
+                    "alignItems": "center",
+                    "width": "100%",
+                    "paddingLeft": "10%",
+                    "paddingRight": "10%",
+                    "paddingTop": "8dp",
+                    "paddingBottom": "8dp",
+                    "items": [
+                      {
+                        "type": "Text",
+                        "text": "Sunrise",
+                        "fontSize": "22dp",
+                        "color": "#A0A0A0",
+                        "width": "40%"
+                      },
+                      {
+                        "type": "Text",
+                        "text": "${templateData.properties.prayers.Sunrise}",
+                        "fontSize": "22dp",
+                        "color": "#A0A0A0",
+                        "textAlign": "right",
+                        "width": "40%"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Container",
+                    "direction": "row",
+                    "justifyContent": "spaceBetween",
+                    "alignItems": "center",
+                    "width": "100%",
+                    "paddingLeft": "10%",
+                    "paddingRight": "10%",
+                    "paddingTop": "8dp",
+                    "paddingBottom": "8dp",
+                    "items": [
+                      {
+                        "type": "Text",
+                        "text": "Dhuhr",
+                        "fontSize": "26dp",
+                        "fontWeight": "bold",
+                        "color": "#FFFFFF",
+                        "width": "40%"
+                      },
+                      {
+                        "type": "Text",
+                        "text": "${templateData.properties.prayers.Dhuhr}",
+                        "fontSize": "26dp",
+                        "color": "#E0E0E0",
+                        "textAlign": "right",
+                        "width": "40%"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Container",
+                    "direction": "row",
+                    "justifyContent": "spaceBetween",
+                    "alignItems": "center",
+                    "width": "100%",
+                    "paddingLeft": "10%",
+                    "paddingRight": "10%",
+                    "paddingTop": "8dp",
+                    "paddingBottom": "8dp",
+                    "items": [
+                      {
+                        "type": "Text",
+                        "text": "Asr",
+                        "fontSize": "26dp",
+                        "fontWeight": "bold",
+                        "color": "#FFFFFF",
+                        "width": "40%"
+                      },
+                      {
+                        "type": "Text",
+                        "text": "${templateData.properties.prayers.Asr}",
+                        "fontSize": "26dp",
+                        "color": "#E0E0E0",
+                        "textAlign": "right",
+                        "width": "40%"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Container",
+                    "direction": "row",
+                    "justifyContent": "spaceBetween",
+                    "alignItems": "center",
+                    "width": "100%",
+                    "paddingLeft": "10%",
+                    "paddingRight": "10%",
+                    "paddingTop": "8dp",
+                    "paddingBottom": "8dp",
+                    "items": [
+                      {
+                        "type": "Text",
+                        "text": "Maghrib",
+                        "fontSize": "26dp",
+                        "fontWeight": "bold",
+                        "color": "#FFFFFF",
+                        "width": "40%"
+                      },
+                      {
+                        "type": "Text",
+                        "text": "${templateData.properties.prayers.Maghrib}",
+                        "fontSize": "26dp",
+                        "color": "#E0E0E0",
+                        "textAlign": "right",
+                        "width": "40%"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Container",
+                    "direction": "row",
+                    "justifyContent": "spaceBetween",
+                    "alignItems": "center",
+                    "width": "100%",
+                    "paddingLeft": "10%",
+                    "paddingRight": "10%",
+                    "paddingTop": "8dp",
+                    "paddingBottom": "8dp",
+                    "items": [
+                      {
+                        "type": "Text",
+                        "text": "Isha",
+                        "fontSize": "26dp",
+                        "fontWeight": "bold",
+                        "color": "#FFFFFF",
+                        "width": "40%"
+                      },
+                      {
+                        "type": "Text",
+                        "text": "${templateData.properties.prayers.Isha}",
+                        "fontSize": "26dp",
+                        "color": "#E0E0E0",
+                        "textAlign": "right",
+                        "width": "40%"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Container",
+                "width": "100%",
+                "alignItems": "center",
+                "paddingBottom": "2vh",
+                "items": [
+                  {
+                    "type": "Text",
+                    "text": "Say \"play the Azan\" to hear the call to prayer",
+                    "fontSize": "16dp",
+                    "color": "#808080",
+                    "textAlign": "center"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

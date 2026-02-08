@@ -1,0 +1,354 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "my azan",
+      "intents": [
+        {
+          "name": "PlayAzanIntent",
+          "slots": [
+            {
+              "name": "PrayerName",
+              "type": "PRAYER_NAME"
+            }
+          ],
+          "samples": [
+            "play the azan",
+            "play azan",
+            "play the adhan",
+            "play adhan",
+            "play the call to prayer",
+            "call to prayer",
+            "play {PrayerName} azan",
+            "play the {PrayerName} azan",
+            "play azan for {PrayerName}",
+            "play the {PrayerName} call to prayer",
+            "play {PrayerName} adhan",
+            "I want to hear the azan",
+            "I want to hear the call to prayer",
+            "start the azan",
+            "give me the azan",
+            "azan please",
+            "let me hear the azan"
+          ]
+        },
+        {
+          "name": "GetPrayerTimeIntent",
+          "slots": [
+            {
+              "name": "PrayerName",
+              "type": "PRAYER_NAME"
+            },
+            {
+              "name": "CityName",
+              "type": "AMAZON.City"
+            }
+          ],
+          "samples": [
+            "what time is {PrayerName}",
+            "when is {PrayerName}",
+            "when is {PrayerName} prayer",
+            "when is {PrayerName} prayer today",
+            "what time is {PrayerName} prayer",
+            "what time is {PrayerName} today",
+            "{PrayerName} time",
+            "tell me {PrayerName} time",
+            "what time is {PrayerName} in {CityName}",
+            "when is {PrayerName} in {CityName}",
+            "when is the next prayer",
+            "what is the next prayer",
+            "next prayer",
+            "next prayer time"
+          ]
+        },
+        {
+          "name": "GetAllPrayerTimesIntent",
+          "slots": [
+            {
+              "name": "CityName",
+              "type": "AMAZON.City"
+            }
+          ],
+          "samples": [
+            "give me all prayer times",
+            "what are today's prayer times",
+            "all prayer times",
+            "prayer schedule",
+            "prayer times",
+            "today's prayers",
+            "daily prayer times",
+            "prayer times for today",
+            "what are the prayer times",
+            "prayer times for {CityName}",
+            "prayer times in {CityName}",
+            "what are the prayer times in {CityName}",
+            "tell me all the prayer times",
+            "list all prayer times"
+          ]
+        },
+        {
+          "name": "SetCityIntent",
+          "slots": [
+            {
+              "name": "CityName",
+              "type": "AMAZON.City"
+            }
+          ],
+          "samples": [
+            "set my city to {CityName}",
+            "change my city to {CityName}",
+            "my city is {CityName}",
+            "I live in {CityName}",
+            "update my location to {CityName}",
+            "set location to {CityName}",
+            "change location to {CityName}",
+            "I am in {CityName}",
+            "use {CityName}",
+            "set city {CityName}"
+          ]
+        },
+        {
+          "name": "SetMethodIntent",
+          "slots": [
+            {
+              "name": "MethodName",
+              "type": "CALCULATION_METHOD"
+            }
+          ],
+          "samples": [
+            "set calculation method to {MethodName}",
+            "change method to {MethodName}",
+            "use {MethodName} method",
+            "use {MethodName} calculation",
+            "set method {MethodName}",
+            "change calculation to {MethodName}",
+            "switch to {MethodName}"
+          ]
+        },
+        {
+          "name": "SetReminderIntent",
+          "slots": [
+            {
+              "name": "PrayerName",
+              "type": "PRAYER_NAME"
+            }
+          ],
+          "samples": [
+            "set reminders",
+            "set prayer reminders",
+            "enable reminders",
+            "remind me for prayers",
+            "set a reminder for {PrayerName}",
+            "remind me for {PrayerName}",
+            "remind me for {PrayerName} prayer",
+            "set reminders for all prayers",
+            "turn on reminders"
+          ]
+        },
+        {
+          "name": "AMAZON.PauseIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.ResumeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.YesIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NoIntent",
+          "samples": []
+        }
+      ],
+      "types": [
+        {
+          "name": "PRAYER_NAME",
+          "values": [
+            {
+              "name": {
+                "value": "Fajr",
+                "synonyms": [
+                  "dawn",
+                  "morning prayer",
+                  "subh",
+                  "dawn prayer",
+                  "fajr prayer"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Dhuhr",
+                "synonyms": [
+                  "noon",
+                  "zuhr",
+                  "midday prayer",
+                  "noon prayer",
+                  "dhuhr prayer",
+                  "zohar"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Asr",
+                "synonyms": [
+                  "afternoon",
+                  "afternoon prayer",
+                  "asr prayer"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Maghrib",
+                "synonyms": [
+                  "sunset",
+                  "sunset prayer",
+                  "maghrib prayer",
+                  "maghreb"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Isha",
+                "synonyms": [
+                  "night",
+                  "night prayer",
+                  "isha prayer",
+                  "evening prayer",
+                  "esha"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "CALCULATION_METHOD",
+          "values": [
+            {
+              "name": {
+                "value": "ISNA",
+                "synonyms": [
+                  "Islamic Society of North America",
+                  "North America"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "MWL",
+                "synonyms": [
+                  "Muslim World League",
+                  "world league"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Egyptian",
+                "synonyms": [
+                  "Egypt",
+                  "Egyptian General Authority"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Umm Al-Qura",
+                "synonyms": [
+                  "Makkah",
+                  "Mecca",
+                  "Umm al Qura"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Karachi",
+                "synonyms": [
+                  "University of Islamic Sciences Karachi",
+                  "Pakistan"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Tehran",
+                "synonyms": [
+                  "Iran",
+                  "Institute of Geophysics Tehran"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Jafari",
+                "synonyms": [
+                  "Shia",
+                  "Ithna Ashari"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Kuwait",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Qatar",
+                "synonyms": []
+              }
+            },
+            {
+              "name": {
+                "value": "Turkey",
+                "synonyms": [
+                  "Diyanet"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Dubai",
+                "synonyms": [
+                  "UAE"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Singapore",
+                "synonyms": []
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "type": "APL",
+  "version": "2024.2",
+  "description": "My Azan - Welcome Screen",
+  "theme": "dark",
+  "mainTemplate": {
+    "parameters": [
+      "templateData"
+    ],
+    "items": [
+      {
+        "type": "Container",
+        "width": "100vw",
+        "height": "100vh",
+        "items": [
+          {
+            "type": "Image",
+            "width": "100vw",
+            "height": "100vh",
+            "position": "absolute",
+            "scale": "best-fill",
+            "source": "https://YOUR_CLOUDFRONT_DOMAIN/assets/mosque-bg-1200.png",
+            "overlayColor": "rgba(0, 30, 60, 0.75)"
+          },
+          {
+            "type": "Container",
+            "width": "100vw",
+            "height": "100vh",
+            "justifyContent": "center",
+            "alignItems": "center",
+            "paddingLeft": "5vw",
+            "paddingRight": "5vw",
+            "items": [
+              {
+                "type": "Text",
+                "text": "&#x2726;",
+                "fontSize": "60dp",
+                "color": "#D4AF37",
+                "textAlign": "center"
+              },
+              {
+                "type": "Text",
+                "text": "${templateData.properties.title}",
+                "fontSize": "48dp",
+                "fontWeight": "bold",
+                "color": "#FFFFFF",
+                "textAlign": "center",
+                "paddingTop": "16dp"
+              },
+              {
+                "type": "Text",
+                "text": "${templateData.properties.subtitle}",
+                "fontSize": "24dp",
+                "color": "#D4AF37",
+                "textAlign": "center",
+                "paddingTop": "8dp"
+              },
+              {
+                "type": "Container",
+                "width": "80%",
+                "paddingTop": "32dp",
+                "items": [
+                  {
+                    "type": "Text",
+                    "text": "${templateData.properties.message}",
+                    "fontSize": "20dp",
+                    "color": "#E0E0E0",
+                    "textAlign": "center",
+                    "fontStyle": "italic"
+                  }
+                ]
+              },
+              {
+                "type": "Container",
+                "paddingTop": "48dp",
+                "items": [
+                  {
+                    "type": "Text",
+                    "text": "Say \"set my city to London\" to begin",
+                    "fontSize": "18dp",
+                    "color": "#A0A0A0",
+                    "textAlign": "center"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
