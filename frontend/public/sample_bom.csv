@@ -1,0 +1,28 @@
+item_id,category,item_name,description,quantity,unit,unit_price,total_price,supplier
+BOM-001,Plants,Lavender,English Lavender - 200mm pot,12,ea,8.50,102.00,GreenLife Nursery
+BOM-002,Plants,Iceberg Rose,Floribunda Rose - bare root,6,ea,18.00,108.00,GreenLife Nursery
+BOM-003,Plants,Mixed Dahlia,Mixed Dahlia tubers,8,ea,6.50,52.00,GreenLife Nursery
+BOM-004,Plants,Roma Tomato,Roma Tomato seedlings,10,ea,3.50,35.00,Veggie Patch Supplies
+BOM-005,Plants,Sweet Basil,Sweet Basil seedlings,6,ea,2.50,15.00,Veggie Patch Supplies
+BOM-006,Plants,Bell Pepper,Bell Pepper seedlings,8,ea,3.50,28.00,Veggie Patch Supplies
+BOM-007,Plants,Rosemary,Rosemary - 140mm pot,4,ea,7.00,28.00,GreenLife Nursery
+BOM-008,Plants,Common Thyme,Common Thyme - 140mm pot,6,ea,5.50,33.00,GreenLife Nursery
+BOM-009,Plants,Spearmint,Spearmint - 140mm pot,4,ea,5.50,22.00,GreenLife Nursery
+BOM-010,Plants,Coast Banksia,Coast Banksia - 200mm pot,3,ea,22.00,66.00,Native Plant Nursery
+BOM-011,Plants,Rosemary Grevillea,Rosemary Grevillea - 200mm,4,ea,18.00,72.00,Native Plant Nursery
+BOM-012,Plants,Soft Tree Fern,Soft Tree Fern - 200mm pot,3,ea,35.00,105.00,Native Plant Nursery
+BOM-013,Plants,Blue Hosta,Blue Hosta - 140mm pot,6,ea,12.00,72.00,GreenLife Nursery
+BOM-014,Plants,Grass Seed Mix,Hardy lawn mix - 100sqm,1,bag,45.00,45.00,Lawn & Turf Co
+BOM-015,Hardscape,Stone Pavers,Natural sandstone 400x400mm,85,ea,12.00,1020.00,Stone & Landscape Supply
+BOM-016,Hardscape,Garden Edging,Steel garden edging 2.4m,15,ea,28.00,420.00,Stone & Landscape Supply
+BOM-017,Hardscape,Patio Pavers,Bluestone pavers 600x600mm,45,ea,35.00,1575.00,Stone & Landscape Supply
+BOM-018,Soil & Mulch,Premium Garden Mix,Blended soil for beds,4,m3,65.00,260.00,Soil Your Undies
+BOM-019,Soil & Mulch,Organic Mulch,Pine bark mulch,3,m3,55.00,165.00,Soil Your Undies
+BOM-020,Soil & Mulch,Compost,Certified organic compost,2,m3,50.00,100.00,Soil Your Undies
+BOM-021,Irrigation,Drip Line Kit,Garden bed drip irrigation,1,kit,185.00,185.00,Irrigation Direct
+BOM-022,Irrigation,Pop-up Sprinklers,Lawn sprinkler heads,4,ea,42.00,168.00,Irrigation Direct
+BOM-023,Irrigation,Timer Controller,4-zone smart controller,1,ea,129.00,129.00,Irrigation Direct
+BOM-024,Features,Garden Fountain,Recirculating stone fountain,1,ea,450.00,450.00,Water Features AU
+BOM-025,Features,Garden Bench,Hardwood timber bench,1,ea,380.00,380.00,Outdoor Living Co
+BOM-026,Fertilizer,Slow Release,All-purpose 3-month feed,2,bag,28.00,56.00,Garden Essentials
+BOM-027,Fertilizer,Seaweed Solution,Liquid seaweed 5L,1,ea,32.00,32.00,Garden Essentials

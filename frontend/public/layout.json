@@ -1,0 +1,76 @@
+{
+  "version": "1.0",
+  "name": "Sample Garden Layout",
+  "dimensions": { "width": 20, "height": 15, "unit": "meters" },
+  "zones": [
+    {
+      "id": "z1",
+      "name": "Front Lawn",
+      "type": "lawn",
+      "bounds": { "x": 0, "y": 0, "width": 20, "height": 5 },
+      "plants": ["grass-mix-01"],
+      "color": "#86efac"
+    },
+    {
+      "id": "z2",
+      "name": "Flower Border",
+      "type": "border",
+      "bounds": { "x": 0, "y": 5, "width": 20, "height": 2 },
+      "plants": ["lavender-01", "rose-01", "dahlia-01"],
+      "color": "#f9a8d4"
+    },
+    {
+      "id": "z3",
+      "name": "Vegetable Patch",
+      "type": "vegetable",
+      "bounds": { "x": 0, "y": 7, "width": 10, "height": 4 },
+      "plants": ["tomato-01", "basil-01", "pepper-01"],
+      "color": "#fde68a"
+    },
+    {
+      "id": "z4",
+      "name": "Herb Garden",
+      "type": "herb",
+      "bounds": { "x": 10, "y": 7, "width": 10, "height": 4 },
+      "plants": ["rosemary-01", "thyme-01", "mint-01"],
+      "color": "#a7f3d0"
+    },
+    {
+      "id": "z5",
+      "name": "Patio Area",
+      "type": "hardscape",
+      "bounds": { "x": 5, "y": 11, "width": 10, "height": 4 },
+      "plants": [],
+      "color": "#d4d4d8"
+    },
+    {
+      "id": "z6",
+      "name": "Native Shrubs",
+      "type": "shrub",
+      "bounds": { "x": 0, "y": 11, "width": 5, "height": 4 },
+      "plants": ["banksia-01", "grevillea-01"],
+      "color": "#6ee7b7"
+    },
+    {
+      "id": "z7",
+      "name": "Shade Garden",
+      "type": "shade",
+      "bounds": { "x": 15, "y": 11, "width": 5, "height": 4 },
+      "plants": ["fern-01", "hosta-01"],
+      "color": "#34d399"
+    }
+  ],
+  "paths": [
+    {
+      "id": "p1",
+      "name": "Main Walkway",
+      "material": "stone-paver",
+      "points": [{ "x": 10, "y": 0 }, { "x": 10, "y": 11 }],
+      "width": 1.2
+    }
+  ],
+  "features": [
+    { "id": "f1", "name": "Water Feature", "type": "fountain", "position": { "x": 10, "y": 13 }, "size": { "width": 2, "height": 2 } },
+    { "id": "f2", "name": "Garden Bench", "type": "seating", "position": { "x": 7, "y": 12 }, "size": { "width": 1.5, "height": 0.5 } }
+  ]
+}

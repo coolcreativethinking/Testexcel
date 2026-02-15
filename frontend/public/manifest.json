@@ -1,0 +1,24 @@
+{
+  "name": "Greenmind - AI Garden Designer",
+  "short_name": "Greenmind",
+  "description": "AI-powered garden design assistant. Upload a photo, get beautiful landscape designs.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#052e16",
+  "theme_color": "#16a34a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+plant_id,common_name,botanical_name,zone,quantity,spacing_cm,sun_requirement,water_needs,bloom_season,mature_height_cm,mature_width_cm,soil_type,notes
+P001,English Lavender,Lavandula angustifolia,Flower Border,12,40,Full Sun,Low,Spring-Summer,60,60,Well-drained,Drought tolerant once established
+P002,Iceberg Rose,Rosa 'Iceberg',Flower Border,6,80,Full Sun,Moderate,Spring-Autumn,120,90,Rich loam,Prune in late winter
+P003,Mixed Dahlia,Dahlia pinnata,Flower Border,8,50,Full Sun,Moderate,Summer-Autumn,100,60,Rich well-drained,Lift tubers in cold climates
+P004,Roma Tomato,Solanum lycopersicum,Vegetable Patch,10,50,Full Sun,Regular,Summer,150,60,Rich compost-amended,Stake or cage for support
+P005,Sweet Basil,Ocimum basilicum,Vegetable Patch,6,30,Full Sun,Regular,Summer,45,30,Rich moist,Pinch flowers to extend harvest
+P006,Bell Pepper,Capsicum annuum,Vegetable Patch,8,45,Full Sun,Regular,Summer-Autumn,70,50,Rich well-drained,Harvest when firm and coloured
+P007,Rosemary,Rosmarinus officinalis,Herb Garden,4,60,Full Sun,Low,Spring,100,80,Well-drained,Excellent culinary herb
+P008,Common Thyme,Thymus vulgaris,Herb Garden,6,25,Full Sun,Low,Spring-Summer,30,30,Well-drained,Great ground cover
+P009,Spearmint,Mentha spicata,Herb Garden,4,40,Part Shade,Regular,Summer,60,60,Moist rich,Plant in containers to control spread
+P010,Coast Banksia,Banksia integrifolia,Native Shrubs,3,200,Full Sun,Low,Autumn-Winter,800,400,Sandy well-drained,Attracts native birds
+P011,Rosemary Grevillea,Grevillea rosmarinifolia,Native Shrubs,4,150,Full Sun,Low,Winter-Spring,180,150,Well-drained,Attracts honeyeaters
+P012,Soft Tree Fern,Dicksonia antarctica,Shade Garden,3,150,Shade,Regular,Non-flowering,300,200,Moist humus-rich,Keep trunk moist in summer
+P013,Blue Hosta,Hosta sieboldiana,Shade Garden,6,50,Shade,Regular,Summer,60,100,Moist rich,Protect from slugs and snails
+P014,Hardy Lawn Mix,Festuca/Lolium blend,Front Lawn,1,Broadcast,Full Sun,Regular,Non-flowering,8,Spreading,Most soil types,Mow to 3-4cm height
