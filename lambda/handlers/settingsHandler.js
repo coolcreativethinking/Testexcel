@@ -21,17 +21,18 @@ const SetCityIntentHandler = {
   async handle(handlerInput) {
     const { attributesManager, responseBuilder } = handlerInput;
     const cityName = getSlotValue(handlerInput, 'CityName');
+    const countryName = getSlotValue(handlerInput, 'CountryName');
 
     if (!cityName) {
       return responseBuilder
-        .speak('I didn\'t catch the city name. Please say "set my city to" followed by your city.')
-        .reprompt('Which city are you in?')
+        .speak('I didn\'t catch the city name. Please say "set my city to" followed by your city, for example "set my city to Dubai in UAE".')
+        .reprompt('Which city are you in? You can say the city and country, like "Dubai in UAE".')
         .getResponse();
     }
 
     try {
-      // Geocode the city
-      const location = await resolveCity(cityName);
+      // Geocode the city with optional country for accuracy
+      const location = await resolveCity(cityName, countryName);
 
       // Save to persistent attributes
       let userSettings;
@@ -55,7 +56,8 @@ const SetCityIntentHandler = {
       attributesManager.setPersistentAttributes(userSettings);
       await attributesManager.savePersistentAttributes();
 
-      let speechText = sprintf(STRINGS.CITY_SET, cityName);
+      const displayName = countryName ? `${cityName}, ${countryName}` : cityName;
+      let speechText = sprintf(STRINGS.CITY_SET, displayName);
       speechText += 'You can now say "play the Azan" or "what are today\'s prayer times".';
 
       // Suggest setting up routines

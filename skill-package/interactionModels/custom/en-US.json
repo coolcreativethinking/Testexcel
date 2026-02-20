@@ -91,6 +91,10 @@
             {
               "name": "CityName",
               "type": "AMAZON.City"
+            },
+            {
+              "name": "CountryName",
+              "type": "AMAZON.Country"
             }
           ],
           "samples": [
@@ -103,7 +107,13 @@
             "change location to {CityName}",
             "I am in {CityName}",
             "use {CityName}",
-            "set city {CityName}"
+            "set city {CityName}",
+            "set my city to {CityName} in {CountryName}",
+            "I live in {CityName} {CountryName}",
+            "my city is {CityName} in {CountryName}",
+            "set location to {CityName} {CountryName}",
+            "I am in {CityName} {CountryName}",
+            "{CityName} {CountryName}"
           ]
         },
         {
